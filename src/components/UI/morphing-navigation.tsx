@@ -40,7 +40,7 @@ export const MorphingNavigation: React.FC<MorphingNavigationProps> = ({
   borderColor,
   initialTop = 70,
   compactTop = 20,
-  animationDuration = 1,
+  animationDuration = 0.7,
   className,
   onLinkClick,
   onMenuToggle,
@@ -189,7 +189,7 @@ export const MorphingNavigation: React.FC<MorphingNavigationProps> = ({
             borderRadius: 9999,
           }}
           transition={{ duration: animationDuration }}
-          style={{ top: 0, ...customStyles }}
+          style={{ top: 4, ...customStyles }}
         >
           <AnimatePresence>
             {!isMobile && !isSticky &&
@@ -202,7 +202,7 @@ export const MorphingNavigation: React.FC<MorphingNavigationProps> = ({
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="px-5 py-2.5 text-sm font-bold lowercase tracking-wide"
+                  className="px-5 py-2 text-sm font-bold lowercase tracking-wide"
                 >
                   {link.icon && <span className="mr-2 inline-block">{link.icon}</span>}
                   {link.label}
@@ -213,7 +213,7 @@ export const MorphingNavigation: React.FC<MorphingNavigationProps> = ({
           <motion.button
             onClick={handleMenuToggle}
             className={cn(
-              "absolute w-[60px] h-[60px] rounded-full outline-none border cursor-pointer",
+              "absolute w-12 h-12 rounded-full outline-none border cursor-pointer",
               themeStyles.button,
               {
                 hidden: !isSticky && !isMobile,
@@ -241,11 +241,11 @@ export const MorphingNavigation: React.FC<MorphingNavigationProps> = ({
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.1 }}
           >
             <motion.div
               className={cn(
-                "p-8 rounded-2xl backdrop-blur-md border w-11/12 max-w-sm",
+                "p-4 rounded-2xl backdrop-blur-md border w-11/12 max-w-sm",
                 themeStyles.nav,
                 themeStyles.text
               )}
@@ -254,7 +254,7 @@ export const MorphingNavigation: React.FC<MorphingNavigationProps> = ({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <div className="flex flex-col space-y-4">
+              <div className="flex flex-col space-y-2">
                 {links.map((link) => (
                   <a
                     key={link.id}
